@@ -1,3 +1,6 @@
+# pull in any machine-local overrides
+-include Makefile.local
+
 # List all source files the application uses.
 APPLICATION_SRCS = $(notdir $(wildcard ../*.c))  nrf_delay.c
 # Use shell to find name of root folder. Possible but horrible to do in make.
@@ -9,8 +12,8 @@ BOARD = BOARD_PCA10001
 
 #USE_SOFTDEVICE = s110
 
-SDK_PATH = $(HOME)/Projects/nrf51/nrf51822/
-TEMPLATE_PATH = $(HOME)/Projects/nrf51-pure-gcc-setup/template/
+SDK_PATH ?= $(HOME)/Projects/nrf51/nrf51822/
+TEMPLATE_PATH ?= $(HOME)/Projects/nrf51-pure-gcc-setup/template/
 
 CFLAGS = -Os
 

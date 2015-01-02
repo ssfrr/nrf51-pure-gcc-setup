@@ -1,3 +1,6 @@
+# pull in any machine-local overrides
+-include Makefile.local
+
 # List all source files the application uses.
 APPLICATION_SRCS = $(notdir $(wildcard ../*.c))
 APPLICATION_SRCS += app_gpiote.c
@@ -26,8 +29,8 @@ BOARD = BOARD_PCA10001
 
 USE_SOFTDEVICE = s110
 
-SDK_PATH = ../../../../../
-TEMPLATE_PATH = c:/temp/nrf51-pure-gcc-setup/template/
+SDK_PATH ?= ../../../../../
+TEMPLATE_PATH ?= c:/temp/nrf51-pure-gcc-setup/template/
 
 CFLAGS = -Os
 
